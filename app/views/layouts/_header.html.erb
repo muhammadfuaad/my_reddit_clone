@@ -1,12 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 py-3 border-bottom shadow mb-4">
       <div class="float-end">
+      <% if account_signed_in? %>
+        <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class: "btn btn-primary" %>
+      <% else %>   
         <%= link_to "Log In", new_account_session_path, class: "btn btn-outline-primary" %>
         <%= link_to "Sign In", new_account_registration_path,  class: "btn btn-primary"%>
+      <% end %>
 
       </div>
-      <p class="h3">Reddit Clone</p>
+      <span class="h3">Reddit Clone</span>
     </div>
   </div>
 </div>
