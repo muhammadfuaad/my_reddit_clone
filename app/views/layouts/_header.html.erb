@@ -3,7 +3,13 @@
     <div class="col-12 py-3 border-bottom shadow mb-4">
       <div class="float-end">
       <% if account_signed_in? %>
-        <%= button_to 'Sign Out', destroy_account_session_path, method: :delete %>
+        <ul class="list-group"><a><%= current_account.full_name%>
+          <%= button_to 'Profile', "", class: "list-group-item" %>
+          <%= button_to 'Settings', edit_account_registration_path, class: "list-group-item" %>
+          <%= button_to 'Sign Out', destroy_account_session_path, method: :delete, class: "list-group-item" %>
+
+        </ul>
+
 
       <% else %>   
         <%= link_to "Log In", new_account_session_path, class: "btn btn-outline-primary" %>
@@ -11,7 +17,7 @@
       <% end %>
 
       </div>
-      <span class="h3"><%= link_to "Reddit Clone", root_path %></span>
+      <p class="h3"><%= link_to "Reddit Clone", root_path %></p>
     </div>
   </div>
 </div>
