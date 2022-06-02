@@ -28,16 +28,19 @@
 
   <div class="row">
     <div class="col-8">
-      Left side
+      <% @posts.each do |post| %>
+        <div class="card p-3">
+          <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
+          <p><%= truncate post.body, length: 200 %></p>
+        </div>
+      <% end %>
     </div>
     <div class="col-4">
       <p class="h5">up and coming communities</h5>
       <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <% @communities.each do |community| %>
+          <li class="list-group-item"><%= link_to community.name, community_path(community) %></li>
+        <% end %>
       </ul>
 
       <%= link_to "View all", communities_path, class: "btn btn-primary mt-3" %>
