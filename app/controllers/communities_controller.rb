@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_account!, except: [ :index, :show ]
-  before_action :set_community, only: [:show]
+  before_action :set_community, only: [:show, :destroy]
   
   def index
     @communities = Community.all
@@ -22,6 +22,14 @@ class CommunitiesController < ApplicationController
       redirect_to communities_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @community.destroy
+      redirect_to communities_path
+    else
+      render :show
     end
   end
 

@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 py-3 border-bottom shadow mb-4">
+    <div class="col-12 pt-3 pb-3">
       <div class="float-end">
       <% if account_signed_in? %>
-        <ul class="list-group"><a><%= current_account.full_name%>
-          <%= button_to 'Profile', "", class: "list-group-item" %>
-          <%= button_to 'Settings', edit_account_registration_path, class: "list-group-item" %>
-          <%= button_to 'Sign Out', destroy_account_session_path, method: :delete, class: "list-group-item" %>
-
-        </ul>
+        <div class="dropdown">
+          <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= current_account.full_name %>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><%= button_to 'Profile', "", class: "dropdown-item" %></li>
+            <li><%= button_to 'Settings', edit_account_registration_path, class: "dropdown-item", method: :get %></li>
+            <li><%= button_to 'Sign Out', destroy_account_session_path, method: :delete, class: "dropdown-item" %></li>
+          </ul>
+        </div>
 
 
       <% else %>   
