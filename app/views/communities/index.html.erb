@@ -9,6 +9,7 @@
     <div class="card">
       <h3><%= link_to community.name, community %></h3>
       <%= simple_format community.rules %>
+      <%= link_to 'Delete', "community_path(@community)", method: :delete %>
     </div>
   <% end %>
 <% else %>

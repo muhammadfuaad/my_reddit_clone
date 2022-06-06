@@ -4,6 +4,7 @@
       <div class="float-end">
       <% if account_signed_in? %>
         <div class="dropdown">
+<<<<<<< Updated upstream
           <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <%= current_account.full_name %>
           </button>
@@ -11,6 +12,15 @@
             <li><%= button_to 'Profile', "", class: "dropdown-item" %></li>
             <li><%= button_to 'Settings', edit_account_registration_path, class: "dropdown-item", method: :get %></li>
             <li><%= button_to 'Sign Out', destroy_account_session_path, method: :delete, class: "dropdown-item" %></li>
+=======
+          <button class="btn btn-white dropdown-toggle" type="button"      id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_account.full_name%>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item"><%= link_to 'Profile', "" %></a></li>
+            <li><a class="dropdown-item"><%= link_to 'Settings', edit_account_registration_path %></a></li>
+            <li><a class="dropdown-item"><%= link_to 'Sign Out', destroy_account_session_path, method: :get %></a></li>
+>>>>>>> Stashed changes
           </ul>
         </div>
 

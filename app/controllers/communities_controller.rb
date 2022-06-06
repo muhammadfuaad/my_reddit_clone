@@ -26,11 +26,18 @@ class CommunitiesController < ApplicationController
   end
 
   def destroy
+<<<<<<< Updated upstream
     if @community.destroy
       redirect_to communities_path
     else
       render :show
     end
+=======
+    @community = Community.find(params[:id])
+    @community.destroy
+
+
+>>>>>>> Stashed changes
   end
 
   private
