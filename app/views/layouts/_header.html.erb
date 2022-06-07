@@ -1,3 +1,4 @@
+<p class="text-danger">layouts/_header.html.erb</p>
 <div class="container">
   <div class="row">
     <div class="col-12 pt-3 pb-3">
@@ -8,8 +9,8 @@
           <%= current_account.full_name %>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><%= button_to 'Profile', "", class: "dropdown-item" %></li>
-            <li><%= button_to 'Settings', edit_account_registration_path, class: "dropdown-item", method: :get %></li>
+            <li><%= link_to 'Profile', profile_path(current_account.username), class: "dropdown-item" %></li>
+            <li><%= link_to 'Settings', edit_account_registration_path, class: "dropdown-item" %></li>
             <li><%= button_to 'Sign Out', destroy_account_session_path, method: :delete, class: "dropdown-item" %></li>
           </ul>
         </div>

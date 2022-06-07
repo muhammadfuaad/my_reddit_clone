@@ -1,4 +1,16 @@
 <h1 class="text-danger">public/index.html.erb</h1>
+<%= link_to "Current Account Profile", profile_path(current_account.username) %>
+<%= link_to "First Account Profile", profile_path(Account.first.username) %>
+<%= link_to "Last Account Profile", profile_path(Account.last.username) %><br>
+<%= link_to "First Community Posts", community_posts_path(Community.first) %><br>
+<%= link_to "Lasst Community Posts", community_posts_path(Community.last) %><br>
+<%= link_to "Create New Post", new_community_post_path(Community.first) %><br>
+
+
+
+
+
+
 
   <% unless signed_in? %>
     <div class="row">
