@@ -33,6 +33,17 @@ class PostsController < ApplicationController
         render :new
       end
     end
+
+    def destroy
+    
+      if @post.destroy
+        # redirect_to community_posts_path(@community)
+        redirect_to community_path(@post.community_id)
+
+      else
+        render :show
+      end
+    end
   
     private
     def set_post

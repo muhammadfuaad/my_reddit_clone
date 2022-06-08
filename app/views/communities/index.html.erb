@@ -1,4 +1,4 @@
-<h1 class="text-danger">communities/index.html.erb</h1>
+<p class="text-danger">communities/index.html.erb</p>
 <% if account_signed_in? %>
   <div class="float-end">
     <%= link_to "Create new community", new_community_path, class: "btn btn-outline-primary" %> 
@@ -9,7 +9,7 @@
     <div class="card">
       <h3><%= link_to community.name, community %></h3>
       <%= simple_format community.rules %>
-      <%= link_to 'Delete', "community_path(@community)", method: :delete %>
+      <%= link_to 'Delete this community', "community_path(@community)", method: :delete %>
     </div>
   <% end %>
 <% else %>

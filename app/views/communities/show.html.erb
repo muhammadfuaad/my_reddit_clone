@@ -1,11 +1,14 @@
-<h1 class="text-danger">communities/show.html.erb</h1>
+<p class="text-danger">communities/show.html.erb</p>
 <%= link_to "Create New Post", new_community_post_path(@community), class: "btn btn-primary float-end" %>
-<%= @community.name %>
+<h1><%= @community.name %></h1>
 <% @posts.each do |post| %>
   <h4><%= link_to post.title, community_post_path(@community, post) %></h4>
   <p><%= truncate post.body, length: 200 %></p>
+  <p><%= button_to "Delete this post", community_post_path(post), method: :delete %></p>
+
 <% end %>
-<small>
+<h3>Community Rules: </h3>
+<p>
   <%= simple_format @community.rules %>
-</small>
-<%= button_to "Delete", community_path(@community), method: :delete %>
+</p>
+<%= button_to "Delete this community", community_path(@community), method: :delete %>

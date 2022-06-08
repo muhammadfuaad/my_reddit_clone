@@ -7,6 +7,6 @@
 
     <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
     <p><%= truncate post.body, length: 200 %></p>
-    <%= link_to "Delete", community_post_path(post.community_id, post), method: :delete %>
+    <%= link_to "Delete this post", community_post_path(post.community_id, post), method: :delete %>
   </div>         
 <% end %>
