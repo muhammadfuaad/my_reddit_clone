@@ -1,15 +1,16 @@
-<p class="text-danger">communities/show.html.erb</p>
+<p class="text-danger mb-0">communities/show.html.erb</p>
 
 <div class="row mb-4">
   <div class="col-sm-8">
-    <h1><%= @community.name %></h1>
+    <h1 class="mb-0"><%= @community.name %></h1>
   </div>
 
   <div class="col-sm-4">
     <% if @is_subscribed %>
       <%= link_to "Create New Post", new_community_post_path(@community), class: "btn btn-primary float-end" %>
     <% else %>
-      <% render partial: "communities/subscribe", locals: {community_id: @community.id} %>
+      <%= render partial: "communities/subscribe", locals: {community_id: @community.id} %>
+    <% end %>
   </div>
 </div>
 <div class="row">
@@ -18,20 +19,17 @@
   </div>
 
   <div class="col-sm-4">
-    <p>members</p>
-    <%= @subscriber_count %>
-  </div>
-
-  <div class="col-sm-4">
-  <div class="card p-3">
-    <p class="h5">Aboout this community</p>
+    <%= pluralize @subscriber_count, "member" %>
+    <div class="card p-3">
+    <p class="h5">About this community</p>
     <p class="mt-2"><%= @community.summary %></p>
     <h3>Community Rules: </h3>
-  </div>
-    
     <p>
       <%= simple_format @community.rules %>
     </p>
+  </div>
+  </div>
+     
     <%= button_to "Delete this community", community_path(@community), method: :delete %>
 
   </div>

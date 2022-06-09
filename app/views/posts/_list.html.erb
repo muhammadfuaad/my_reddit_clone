@@ -1,12 +1,15 @@
 <p class="text-danger">posts/_list.html.erb</p>
 <% posts.each do |post| %>
+<%# question: why isn't there "@posts"? %>
   <div class="card p-3">
-    <p>username:<%= post.account.username %></p>
+    <p>username:<%= link_to post.account.username, community_path(post.community_id) %></p>
+    <%# question:it has same path & parameters like the next link,then why not is this working?... %>
     <p><%= link_to post.community&.name, community_path(post.community_id) %> Posted by: <%= link_to post.account.full_name, profile_path(post.account.username) %>, <%= time_ago_in_words post.created_at %> ago.</p>
     
 
     <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
     <p><%= truncate post.body, length: 200 %></p>
     <%= link_to "Delete this post", community_post_path(post.community_id, post), method: :delete %>
+    <%# question %>
   </div>         
 <% end %>

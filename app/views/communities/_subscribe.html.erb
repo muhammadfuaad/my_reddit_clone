@@ -1,4 +1,5 @@
+<p class="text-danger">communities/_subscribe.html.erb</p>
 <%= form_for @subscription do |f| %>
-  <%= f.hidden_field :community_id, value :community_id %>
-  <%= f.submit "Join Community" class: "btn btn-success float-end" %>
+  <%= f.hidden_field :community_id, value: community_id %>
+  <%= f.submit "Join Community", class: "btn btn-success text-uppercase float-end" %>
 <% end %>
