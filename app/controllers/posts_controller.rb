@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
     before_action :authenticate_account!, except: [ :index, :show ]
     before_action :set_post, only: [:show]
-    
+    before_action :auth_subscriber, only: [:new]
     def index
       @community = Community.find(params[:community_id])
       @posts = @community.posts 
     end
     
     def show
+      @comment = Comment.new
     end
     
     def new
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
     end
 
     def destroy
-    
+      @post = Post.find(params[:id])    
       if @post.destroy
         # redirect_to community_posts_path(@community)
         redirect_to community_path(@post.community_id)
@@ -47,11 +48,17 @@ class PostsController < ApplicationController
   
     private
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.includes(:comments).find(params[:id])
     end
   
     def post_values
       params.require(:post).permit(:title, :body)
+    end
+
+    def auth_subscriber
+      Subscription.where(community_id: params[:community_id], account_id: current_account.id).any?
+      # Q1
+      redirect_to root_path, flash: {danger: "You are not authorized to view this page."}
     end
   
   

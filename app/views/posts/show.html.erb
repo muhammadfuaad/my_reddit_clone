@@ -2,4 +2,15 @@
 
 <h2><%= @post.title %></h2>
 <%= simple_format @post.body %>
-<%= button_to "Delete this post", community_post_path(@post), method: :delete %>
+<div class="post-comments">
+    <%= render partial: "posts/comments", locals: {comments: @post.comments} %>
+    <%# Q2: Can we use "@post.comments" instead of "@comments"? %>
+</div>
+<h5>Leave a comment here.</h5>
+<%= form_for @comment do |f| %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.text_area :message, placeholder: "Your comment goes here.", class: "form-control" %>
+    <%= f.submit "Submit comment", class: "btn btn-success mt-3" %>
+<% end %>
+
+<%= button_to "Delete this post", community_post_path(@post.community_id, @post), method: :delete %>
