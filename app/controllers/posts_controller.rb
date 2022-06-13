@@ -49,6 +49,7 @@ class PostsController < ApplicationController
     private
     def set_post
       @post = Post.includes(:comments).find(params[:id])
+      # Q9: what does this mean?
     end
   
     def post_values
@@ -56,12 +57,14 @@ class PostsController < ApplicationController
     end
 
     def auth_subscriber
-      Subscription.where(community_id: params[:community_id], account_id: current_account.id).any?
-      # Q1
-      redirect_to root_path, flash: {danger: "You are not authorized to view this page."}
+      unless Subscription.where(community_id: params[:community_id], account_id: current_account.id).any?
+       # question12: not working if replaced if with unless.
+    
+        redirect_to root_path, flash: {danger: "You are not authorized to view this page."}
+      end
     end
   
   
-  end
+end
   
   
