@@ -1,4 +1,4 @@
-<%= comments.each do |comment| %>
+<% comments.each do |comment| %>
   <div class="card">
     <%= link_to comment.account.full_name, profile_path(comment.account.username) %>
     <%# Q7: why can't we use "comment.username" in place of parameter?  %>
